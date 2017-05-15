@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <title>Image Stream</title>
+    <script type='text/javascript' src='js/jquery-2.1.1.min.js'></script>
+    <script type="text/javascript">
+    	$(document).ready(function() {
+    		setInterval(function(){
+	    		$.ajax({
+	    			url: "/refreshPage",
+	             	type: "GET",
+	             	data: {},
+	             	success: function(choices) {
+	             		$('#wlcme').remove();
+	             		d = new Date();
+	                    $('#liveImage').attr('src', 'faceTrack.png?'+d.getTime());
+	                    $('#liveImage').attr('alt', 'waiting for the image');
+	               	}
+	    		});
+	    	}, 100);
+    	})
+    </script>
+</head>
+
+<body>
+    <h1 id = 'wlcme'> Welcome </h1>
+    <img id = "liveImage" style="width:100%;"></img>
+</body>
+</html>
